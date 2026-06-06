@@ -1,0 +1,5 @@
+node_modules/
+work/
+.env
+*.log
+outputs/lumina-dashboard.png
