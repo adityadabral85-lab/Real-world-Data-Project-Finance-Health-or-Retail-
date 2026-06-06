@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Lumina retail analytics and sales forecasting dashboard" />
+    <title>Lumina | Retail Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="orb orb-one"></div><div class="orb orb-two"></div>
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">L</span><span>Lumina</span></a>
+      <nav>
+        <a class="nav-item active" href="#overview"><span>⌂</span> Overview</a>
+        <a class="nav-item" href="#performance"><span>⌁</span> Performance</a>
+        <a class="nav-item" href="#forecast"><span>↗</span> Forecast</a>
+        <a class="nav-item" href="#orders"><span>▤</span> Orders</a>
+      </nav>
+      <div class="side-card">
+        <div class="pulse"></div>
+        <strong>Data pipeline active</strong>
+        <small id="recordCount">Loading records...</small>
+      </div>
+      <div class="profile"><div class="avatar">AK</div><div><strong>Analytics Team</strong><small>Retail workspace</small></div></div>
+    </aside>
+
+    <main>
+      <header>
+        <button class="menu-btn" aria-label="Open menu">☰</button>
+        <div><p class="eyebrow">RETAIL INTELLIGENCE</p><h1>Good morning, team.</h1><p class="subtitle">Here is what is happening across your business.</p></div>
+        <div class="header-actions"><button class="icon-btn" aria-label="Notifications">◌<span></span></button><a class="export-btn" id="exportBtn" href="/api/export">Export report <b>↓</b></a></div>
+      </header>
+
+      <section class="filter-bar" id="overview">
+        <div class="filter-title"><span class="live-dot"></span><span>Live dashboard</span><small id="updatedAt"></small></div>
+        <div class="filters"><label>Category<select id="categoryFilter"><option>All</option></select></label><label>Region<select id="regionFilter"><option>All</option></select></label></div>
+      </section>
+
+      <section class="kpi-grid">
+        <article class="kpi-card featured"><div class="kpi-icon">↗</div><span>Total revenue</span><h2 id="revenue">—</h2><p><b id="growth">—</b> vs previous quarter</p><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="kpi-card"><div class="kpi-top"><span>Net profit</span><span class="tag">Healthy</span></div><h2 id="profit">—</h2><p><b id="margin">—</b> profit margin</p><div class="progress"><i id="marginBar"></i></div></article>
+        <article class="kpi-card"><div class="kpi-top"><span>Completed orders</span><div class="kpi-icon soft">▤</div></div><h2 id="orders">—</h2><p>Across all channels</p><div class="tiny-note"><span>●</span> 93% fulfillment rate</div></article>
+        <article class="kpi-card"><div class="kpi-top"><span>Avg. order value</span><div class="kpi-icon soft violet">$</div></div><h2 id="aov">—</h2><p>Per completed order</p><div class="tiny-note violet-text"><span>◆</span> Strong basket quality</div></article>
+      </section>
+
+      <section class="chart-grid" id="performance">
+        <article class="panel revenue-panel"><div class="panel-head"><div><p class="eyebrow">PERFORMANCE</p><h3>Revenue momentum</h3></div><div class="legend"><span><i class="actual"></i>Actual</span><span><i class="predicted"></i>Forecast</span></div></div><div class="chart-wrap"><canvas id="revenueChart"></canvas><div class="tooltip" id="chartTooltip"></div></div></article>
+        <article class="panel" id="forecast"><div class="panel-head"><div><p class="eyebrow">SMART FORECAST</p><h3>Next 6 months</h3></div><span class="ai-tag">✦ AI model</span></div><div class="forecast-total"><span>Expected revenue</span><strong id="forecastTotal">—</strong></div><div id="forecastList" class="forecast-list"></div></article>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="panel"><div class="panel-head"><div><p class="eyebrow">REVENUE MIX</p><h3>Category performance</h3></div><span class="more">•••</span></div><div class="category-content"><div class="donut" id="donut"><div><strong id="donutTotal">—</strong><small>Total revenue</small></div></div><div id="categoryLegend" class="category-legend"></div></div></article>
+        <article class="panel insights"><div class="panel-head"><div><p class="eyebrow">OPPORTUNITIES</p><h3>Actionable insights</h3></div><span class="sparkle">✦</span></div><div id="insightList"></div></article>
+      </section>
+
+      <section class="panel orders-panel" id="orders"><div class="panel-head"><div><p class="eyebrow">LATEST ACTIVITY</p><h3>Recent orders</h3></div><span class="status-pill"><i></i> Synced</span></div><div class="table-scroll"><table><thead><tr><th>Order</th><th>Customer</th><th>Product</th><th>Region</th><th>Revenue</th><th>Status</th></tr></thead><tbody id="ordersBody"></tbody></table></div></section>
+      <footer>Built for applied data science learning · Retail dataset · Analysis + Prediction + Visualization</footer>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
